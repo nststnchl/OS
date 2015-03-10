@@ -7,7 +7,7 @@ libhelpers:
 	$(MAKE) -C ../lib
 
 cat.o:
-	gcc -o $@ -c -Wall -I../lib $<
+	gcc -o $@ -c -Wall -I../lib cat.c
 
 clean:
 	rm -f cat cat.o
