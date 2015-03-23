@@ -1,7 +1,7 @@
 all: revwords
 
 revwords: revwords.o ../lib/libhelpers.so
-	gcc -o $@ -L../lib -lhelpers $< ../lib/libhelpers.so
+	gcc -o $@ -L../lib $< ../lib/libhelpers.so -lhelpers
 	rm -f revwords.o
 
 ../lib/libhelpers.so:
