@@ -1,4 +1,7 @@
 #include "helpers.h"
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <string.h>
 
 ssize_t read_(int fd, void* buf, size_t count) {
 	if (count == 0) {
@@ -64,4 +67,20 @@ ssize_t write_(int fd, void* buf, size_t count) {
 		good = (count > 0) && (put > 0);
 	}
 	return result;
+}
+
+int spawn(const char* file, char* const argv[]) {
+    int pid = fork();
+    if (pid == 0) {
+        execvp(file, argv);
+        return -1;
+    } else {
+        int status;
+        waitpid(pid, &status, 0);
+        if (!WIFEXITED(status)) {
+            return -1;
+        } else {
+            return WEXITSTATUS(status);
+        }
+    }
 }
