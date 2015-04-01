@@ -1,7 +1,7 @@
 all: cat
 
 cat: cat.o ../lib/libhelpers.so
-	gcc -o $@ -L../lib -lhelpers $< ../lib/libhelpers.so
+	gcc -o $@ -L../lib $< ../lib/libhelpers.so -lhelpers
 	rm -f cat.o
 
 ../lib/libhelpers.so:
