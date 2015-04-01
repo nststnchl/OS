@@ -1,4 +1,7 @@
 #include "bufio.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 #ifdef DEBUG
 #define ABORT(f) if(f) abort();
